@@ -128,7 +128,7 @@ RUN sed -i '/emailnotification=/s/"\([^"]*\)"/"$EMAIL_NOTIFICATION"/' csgoserver
     sed -i '/authkey=/s/"\([^"]*\)"/"$AUTH_KEY"/' csgoserver && \
     sed -i '/ws_collection_id=/s/"\([^"]*\)"/"$WS_COLLECTION_ID"/' csgoserver && \
     sed -i '/ws_start_map=/s/"\([^"]*\)"/"$WS_START_MAP"/' csgoserver && \
-    sed -i '/gslt=/s/"\(["]*\)"/"$GSLT"/' csgoserver
+    sed -i '/gslt=/s/"\([^"]*\)"/"$GSLT"/' csgoserver
 # RUN cat csgoserver  # DEBUG
 
 # Make Steam 1st time Autentiaction (used to setup cached cradentuals for accounts with 2 factor authentication)
