@@ -91,17 +91,17 @@ RUN groupadd -r csgoserver && \
 	useradd -rm -g csgoserver csgoserver && \
 	adduser csgoserver sudo && \
 	echo "csgoserver ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-USER csgoserver
 WORKDIR /home/csgoserver
 
 # Volume
+
+RUN mkdir /home/csgoserver/serverfiles && \
+    mkdir /home/csgoserver/serverfiles/csgo
 ADD cs-server.cfg /home/csgoserver/serverfiles/csgo/cfg/csgo-server.cfg
 RUN chown -R csgoserver:csgoserver /home/csgoserver
 RUN chmod -R 770 /home/csgoserver
-RUN mkdir /home/csgoserver/serverfiles && \
-    mkdir /home/csgoserver/serverfiles/csgo
-
 #VOLUME ["/home/csgoserver/serverfiles
+USER csgoserver
 
 # Download CSGO Server Manager Script
 # https://raw.githubusercontent.com/dgibbs64/linuxgameservers/master/CounterStrikeGlobalOffensive/csgoserver
