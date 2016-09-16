@@ -67,7 +67,6 @@ RUN apt-get update -y && apt-get upgrade -y && \
 
 #FIX
 RUN apt-get install -qq -y curl
-VOLUME /home/csgoserver
 
 # Install Postfix Package OR https://hub.docker.com/r/catatnight/postfix/
 
@@ -94,8 +93,8 @@ USER csgoserver
 WORKDIR /home/csgoserver
 
 # Volume
-#RUN chown -R csgoserver:csgoserver /home/csgoserver
-# VOLUME ["/home/csgoserver/serverfiles"]
+RUN chown -R csgoserver:csgoserver /home/csgoserver
+VOLUME ["/home/csgoserver/serverfiles"]
 
 # Download CSGO Server Manager Script
 # https://raw.githubusercontent.com/dgibbs64/linuxgameservers/master/CounterStrikeGlobalOffensive/csgoserver
