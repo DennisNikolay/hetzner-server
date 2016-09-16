@@ -24,7 +24,7 @@ ENV EMAIL dennis.nikolay@gmx.de
 
 # STEAM LOGIN
 ENV STEAM_USER dennis_snake_gast
-ENV STEAM_PASS "CanTuran"
+ENV STEAM_PASS ""
 
 # Start Variables
 # https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers#Starting_the_Server
