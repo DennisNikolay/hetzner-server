@@ -5,7 +5,7 @@
 # Also see: https://hub.docker.com/r/johnjelinek/csgoserver/~/dockerfile/
 
 # Pull the base image
-FROM ubuntu:14.04
+FROM ubuntu:12.04
 MAINTAINER Austin St. Aubin <AustinSaintAubin@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
