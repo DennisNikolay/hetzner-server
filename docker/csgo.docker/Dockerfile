@@ -97,11 +97,6 @@ RUN groupadd -r csgoserver && \
 	echo "csgoserver ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 WORKDIR /home/csgoserver
 
-# Volume
-
-RUN mkdir /home/csgoserver/serverfiles && \
-    mkdir /home/csgoserver/serverfiles/csgo
-
 
 RUN chown -R csgoserver:csgoserver /home/csgoserver
 RUN chmod -R 770 /home/csgoserver
