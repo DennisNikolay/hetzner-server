@@ -154,4 +154,4 @@ USER csgoserver
 # https://blog.phusion.nl/2015/01/20/docker-and-the-pid-1-zombie-reaping-problem/
 # ENTRYPOINT ["./csgoserver"]  # does not work the way I want to.
 # CMD ["/bin/bash", "-c", "set -e && /home/csgoserver/start.sh"]  # DOES NOT STAY RUNNING.
-#-c './csgoserver auto-install;sudo cp /home/csgoserver/serverfiles/csgo/cfg/csgo-server.cfg.default /home/csgoserver/serverfiles/csgo/cfg/csgo-server.cfg; exec echo "y\n"  | /home/csgoserver/csgoserver debug; bash';
+CMD bash -c './csgoserver auto-install;rm /home/csgoserver/serverfiles/csgo/cfg/csgo-server.cfg; cp /home/csgoserver/serverfiles/csgo/cfg/csgo-server.cfg.default /home/csgoserver/serverfiles/csgo/cfg/csgo-server.cfg; exec echo "y\n"  | /home/csgoserver/csgoserver debug';
