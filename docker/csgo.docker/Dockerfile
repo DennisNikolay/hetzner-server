@@ -145,7 +145,6 @@ USER root
 RUN chown -R csgoserver:csgoserver /home/csgoserver/serverfiles && \
     chmod -R 770 /home/csgoserver/serverfiles
 USER csgoserver
-RUN ./csgoserver auto-install
 # Run Start Script
 # https://labs.ctl.io/dockerfile-entrypoint-vs-cmd/
 # http://stackoverflow.com/questions/21553353/what-is-the-difference-between-cmd-and-entrypoint-in-a-dockerfile
@@ -155,4 +154,4 @@ RUN ./csgoserver auto-install
 # https://blog.phusion.nl/2015/01/20/docker-and-the-pid-1-zombie-reaping-problem/
 # ENTRYPOINT ["./csgoserver"]  # does not work the way I want to.
 # CMD ["/bin/bash", "-c", "set -e && /home/csgoserver/start.sh"]  # DOES NOT STAY RUNNING.
-CMD bash -c 'cp /home/csgoserver/serverfiles/csgo/cfg/csgo-server.cfg.default /home/csgoserver/serverfiles/csgo/cfg/csgo-server.cfg; exec echo "y\n"  | /home/csgoserver/csgoserver debug';
+CMD bash -c './csgoserver auto-install;cp /home/csgoserver/serverfiles/csgo/cfg/csgo-server.cfg.default /home/csgoserver/serverfiles/csgo/cfg/csgo-server.cfg; exec echo "y\n"  | /home/csgoserver/csgoserver debug';
