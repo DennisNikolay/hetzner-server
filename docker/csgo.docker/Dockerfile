@@ -11,7 +11,7 @@ MAINTAINER Austin St. Aubin <AustinSaintAubin@gmail.com>
 ENV DEBIAN_FRONTEND noninteractive
 
 #### Variables ####
-ENV SERVER_NAME "Lame Name - Counter Strike: Global Offensive"
+ENV SERVER_NAME "lame name - lame server"
 ENV RCON_PASS Birnensaft100Ml
 ENV SERVER_PASS "lame"
 ENV SERVER_LAN 0
@@ -173,4 +173,4 @@ RUN echo '# Steam 1st time Autentiaction (used to setup cached cradentuals for a
 # https://blog.phusion.nl/2015/01/20/docker-and-the-pid-1-zombie-reaping-problem/
 # ENTRYPOINT ["./csgoserver"]  # does not work the way I want to.
 # CMD ["/bin/bash", "-c", "set -e && /home/csgoserver/start.sh"]  # DOES NOT STAY RUNNING.
-CMD bash -c 'exec /home/csgoserver/start.sh';'bash'
+CMD bash -c 'ls /home/';'bash'
