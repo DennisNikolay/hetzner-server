@@ -64,6 +64,11 @@ EXPOSE $CLIENT_PORT/udp
 RUN apt-get update -y && apt-get upgrade -y && \
     apt-get install -qqy wget nano tmux mailutils postfix lib32gcc1 \
                          gdb ca-certificates bsdmainutils
+
+#FIX
+RUN apt-get install -qq -y curl
+
+
 # Install Postfix Package OR https://hub.docker.com/r/catatnight/postfix/
 
 # FIX ( perl: warning: Please check that your locale settings: )
