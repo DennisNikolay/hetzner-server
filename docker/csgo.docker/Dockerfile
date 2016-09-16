@@ -129,9 +129,6 @@ RUN sed -i '/emailnotification=/s/"\([^"]*\)"/"$EMAIL_NOTIFICATION"/' csgoserver
     sed -i '/ws_start_map=/s/"\([^"]*\)"/"$WS_START_MAP"/' csgoserver
 # RUN cat csgoserver  # DEBUG
 
-# Run Install Script
-RUN ./csgoserver auto-install
-
 # Make Steam 1st time Autentiaction (used to setup cached cradentuals for accounts with 2 factor authentication)
 RUN echo '# Steam 1st time Autentiaction (used to setup cached cradentuals for accounts with 2 factor authentication)' > steam-login.sh && \
     echo '# ------------------' >> steam-login.sh && \
@@ -142,6 +139,10 @@ RUN echo '# Steam 1st time Autentiaction (used to setup cached cradentuals for a
     echo 'steamcmd/./steamcmd.sh +login $STEAM_USER $STEAM_PASS  # Login to steam' >> steam-login.sh && \
     echo 'sed -i "/steampass=/s/\"\([^\"]*\)\"/\"\"/" csgoserver  # CLEAR PASSWORD FIELD in csgoserver script' >> steam-login.sh && \
     chmod +x steam-login.sh
+
+
+# Run Install Script
+RUN ./csgoserver auto-install
 
 # Run Start Script
 # https://labs.ctl.io/dockerfile-entrypoint-vs-cmd/
