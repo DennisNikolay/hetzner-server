@@ -87,7 +87,7 @@ RUN dpkg-reconfigure locales
 # Create softlink for script (Downloaded Later), this will allow ENTRYPOINT to find the script ( endpoint runs in /root/ )
 # RUN ln -s "/home/csgoserver/csgoserver" "/root/csgoserver"
 
-VOLUME serverfiles /home/csgoserver/serverfiles
+ADD serverfiles /home/csgoserver/serverfiles
 
 # Create user to run as
 # script refuses to run in root, create user
@@ -140,7 +140,9 @@ RUN sed -i '/emailnotification=/s/"\([^"]*\)"/"$EMAIL_NOTIFICATION"/' csgoserver
 
 # Run Install Script
 #RUN ./csgoserver auto-install
-
+ADD serverfiles /home/csgoserver/serverfiles
+RUN chown -R csgoserver:csgoserver /home/csgoserver/serverfiles && \
+    chmod -R 770 /home/csgoserver/serverfiles
 # Run Start Script
 # https://labs.ctl.io/dockerfile-entrypoint-vs-cmd/
 # http://stackoverflow.com/questions/21553353/what-is-the-difference-between-cmd-and-entrypoint-in-a-dockerfile
