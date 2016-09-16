@@ -99,13 +99,6 @@ WORKDIR /home/csgoserver
 
 RUN mkdir /home/csgoserver/serverfiles && \
     mkdir /home/csgoserver/serverfiles/csgo
-# Install Metamod
-RUN wget -O /home/csgoserver/metamod.tar.gz http://mirror.pointysoftware.net/alliedmodders/mmsource-1.10.6-linux.tar.gz
-RUN tar zxvf metamod.tar.gz -C /home/csgoserver/serverfiles/csgo
-
-#Install Sourcemod
-RUN wget -O /home/csgoserver/sourcemod.tar.gz http://www.sourcemod.net/smdrop/1.8/sourcemod-1.8.0-git5929-linux.tar.gz
-RUN tar zxvf sourcemod.tar.gz -C /home/csgoserver/serverfiles/csgo
 
 
 ADD cs-server.cfg /home/csgoserver/serverfiles/csgo/cfg/csgo-server.cfg.default
@@ -119,6 +112,15 @@ USER csgoserver
 # https://raw.githubusercontent.com/dgibbs64/linuxgameservers/master/CounterStrikeGlobalOffensive/csgoserver
 RUN wget http://gameservermanagers.com/dl/csgoserver && \
     chmod +x csgoserver
+
+# Install Metamod
+RUN wget -O /home/csgoserver/metamod.tar.gz http://mirror.pointysoftware.net/alliedmodders/mmsource-1.10.6-linux.tar.gz
+RUN tar zxvf metamod.tar.gz -C /home/csgoserver/serverfiles/csgo
+
+#Install Sourcemod
+RUN wget -O /home/csgoserver/sourcemod.tar.gz http://www.sourcemod.net/smdrop/1.8/sourcemod-1.8.0-git5929-linux.tar.gz
+RUN tar zxvf sourcemod.tar.gz -C /home/csgoserver/serverfiles/csgo
+
 
 # Edit Server Script to hold Docker Environmental Varables
 RUN sed -i '/emailnotification=/s/"\([^"]*\)"/"$EMAIL_NOTIFICATION"/' csgoserver && \
