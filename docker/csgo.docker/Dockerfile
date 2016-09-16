@@ -34,8 +34,8 @@ ENV STEAM_PASS ""
 # Classic Competitive        0            1
 # Demolition                 1            1
 # Deathmatch                 1            2
-ENV GAME_MODE 0
-ENV GAME_TYPE 1
+ENV GAME_MODE 1
+ENV GAME_TYPE 0
 ENV DEFAULT_MAP de_dust2
 ENV MAP_GROUP random_classic
 ENV MAX_PLAYERS 20
@@ -50,7 +50,7 @@ ENV GSLT "A2DDBB58121972F629D2702CD31746D9"
 # Optional: Workshop Parameters
 # https://developer.valvesoftware.com/wiki/CSGO_Workshop_For_Server_Operators
 # To get an authkey visit - http://steamcommunity.com/dev/apikey
-ENV AUTH_KEY ""
+ENV AUTH_KEY "3EAD6F2AED0CF979740C762A5AAB9E9B"
 ENV WS_COLLECTION_ID ""
 ENV WS_START_MAP ""
 
@@ -70,6 +70,7 @@ RUN apt-get update -y && apt-get upgrade -y && \
 RUN apt-get install -qq -y curl
 RUN apt-get install -qq -y bsdmainutils python
 RUN apt-get install -qq -y bzip2 lib32gcc1 libstdc++6:i386
+RUN apt-get install -qq -y sudo vim
 
 # Install Postfix Package OR https://hub.docker.com/r/catatnight/postfix/
 
@@ -98,7 +99,7 @@ WORKDIR /home/csgoserver
 
 RUN mkdir /home/csgoserver/serverfiles && \
     mkdir /home/csgoserver/serverfiles/csgo
-ADD cs-server.cfg /home/csgoserver/serverfiles/csgo/cfg/csgo-server.cfg
+ADD cs-server.cfg /home/csgoserver/serverfiles/csgo/cfg/csgo-server.cfg.default
 RUN chown -R csgoserver:csgoserver /home/csgoserver
 RUN chmod -R 770 /home/csgoserver
 #VOLUME ["/home/csgoserver/serverfiles
@@ -155,4 +156,4 @@ RUN echo '# Steam 1st time Autentiaction (used to setup cached cradentuals for a
 # https://blog.phusion.nl/2015/01/20/docker-and-the-pid-1-zombie-reaping-problem/
 # ENTRYPOINT ["./csgoserver"]  # does not work the way I want to.
 # CMD ["/bin/bash", "-c", "set -e && /home/csgoserver/start.sh"]  # DOES NOT STAY RUNNING.
-CMD bash -c './csgoserver auto-install; exec echo "y\n"  | /home/csgoserver/csgoserver debug';
+CMD bash -c './csgoserver auto-install;cp /home/csgoserver/serverfiles/csgo/cfg/csgo-server.cfg.default /home/csgoserver/serverfiles/csgo/cfg/csgo-server.cfg; exec echo "y\n"  | /home/csgoserver/csgoserver debug';
