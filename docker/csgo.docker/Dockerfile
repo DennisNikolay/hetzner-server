@@ -99,7 +99,8 @@ RUN chown -R csgoserver:csgoserver /home/csgoserver
 RUN mkdir /home/csgoserver/serverfiles && \
     mkdir /home/csgoserver/serverfiles/csgo
 
-#VOLUME ["/home/csgoserver/serverfiles"]
+#VOLUME ["/home/csgoserver/serverfiles
+ADD cs-server.cfg /home/csgoserver/serverfiles/csgo/cfg/csgo-server.cfg
 
 # Download CSGO Server Manager Script
 # https://raw.githubusercontent.com/dgibbs64/linuxgameservers/master/CounterStrikeGlobalOffensive/csgoserver
