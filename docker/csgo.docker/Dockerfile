@@ -143,18 +143,6 @@ RUN sed -i '/emailnotification=/s/"\([^"]*\)"/"$EMAIL_NOTIFICATION"/' csgoserver
     sed -i '/gslt=/s/"\([^"]*\)"/"$GSLT"/' csgoserver
 # RUN cat csgoserver  # DEBUG
 
-# Make Steam 1st time Autentiaction (used to setup cached cradentuals for accounts with 2 factor authentication)
-RUN echo '# Steam 1st time Autentiaction (used to setup cached cradentuals for accounts with 2 factor authentication)' > steam-login.sh && \
-    echo '# ------------------' >> steam-login.sh && \
-    echo 'echo Before running this script you might have to run "./csgoserver install" to download "steamcmd"' >> steam-login.sh && \
-    echo 'echo After running this script, edit "csgoserver" script or the "STEAM_PASS" envirmental varable and clear out the password with a space or leave it blank' >> steam-login.sh && \
-    echo 'echo =================' >> steam-login.sh && \
-    #echo 'echo enter password & 2nd factor' >> start.sh && \
-    echo 'steamcmd/./steamcmd.sh +login $STEAM_USER $STEAM_PASS  # Login to steam' >> steam-login.sh && \
-    echo 'sed -i "/steampass=/s/\"\([^\"]*\)\"/\"\"/" csgoserver  # CLEAR PASSWORD FIELD in csgoserver script' >> steam-login.sh && \
-    chmod +x steam-login.sh
-
-
 # Run Install Script
 #RUN ./csgoserver auto-install
 
