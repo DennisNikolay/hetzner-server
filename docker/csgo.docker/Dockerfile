@@ -102,7 +102,7 @@ RUN mkdir /home/csgoserver/serverfiles && \
 
 
 ADD cs-server.cfg /home/csgoserver/serverfiles/csgo/cfg/csgo-server.cfg.default
-ADD admin.cfg home/csgoserver/serverfiles/csgo/addons/sourcemod/configs/admins.cfg
+ADD admin.cfg /cdhome/csgoserver/serverfiles/csgo/addons/sourcemod/configs/admins.cfg
 RUN chown -R csgoserver:csgoserver /home/csgoserver
 RUN chmod -R 770 /home/csgoserver
 #VOLUME ["/home/csgoserver/serverfiles
@@ -120,6 +120,8 @@ RUN tar zxvf metamod.tar.gz -C /home/csgoserver/serverfiles/csgo
 #Install Sourcemod
 RUN wget -O /home/csgoserver/sourcemod.tar.gz http://www.sourcemod.net/smdrop/1.8/sourcemod-1.8.0-git5929-linux.tar.gz
 RUN tar zxvf sourcemod.tar.gz -C /home/csgoserver/serverfiles/csgo
+
+ADD pistolround.smx /home/csgoserver/serverfiles/csgo/addons/sourcemod/plugins/pistolround.smx
 
 
 # Edit Server Script to hold Docker Environmental Varables
