@@ -132,27 +132,6 @@ RUN sed -i '/emailnotification=/s/"\([^"]*\)"/"$EMAIL_NOTIFICATION"/' csgoserver
 # Run Install Script
 # RUN ./csgoserver auto-install
 
-# Make Start Script
-RUN echo '# Docker Start / Run Script' > start.sh && \
-    echo '' >> start.sh && \
-    echo '# Edit Server Config to hold Docker Environmental Varables' >> start.sh && \
-    echo '# ------------------' >> start.sh && \
-    echo 'sed -i "/hostname/s/\"\([^\"]*\)\"/\"$SERVER_NAME\"/" serverfiles/csgo/cfg/csgo-server.cfg' >> start.sh && \
-    echo 'sed -i "/rcon_password/s/\"\([^\"]*\)\"/\"$RCON_PASS\"/" serverfiles/csgo/cfg/csgo-server.cfg' >> start.sh && \
-    echo 'sed -i "/sv_password/s/\"\([^\"]*\)\"/\"$SERVER_PASS\"/" serverfiles/csgo/cfg/csgo-server.cfg' >> start.sh && \
-    echo 'sed -i "/sv_lan/s/\"\([^\"]*\)\"/\"$SERVER_LAN\"/" serverfiles/csgo/cfg/csgo-server.cfg' >> start.sh && \
-    echo 'sed -i "/sv_region/s/\"\([^\"]*\)\"/\"$SERVER_REGION\"/" serverfiles/csgo/cfg/csgo-server.cfg' >> start.sh && \
-    echo 'sed -i '\''s/""/"/g'\'' serverfiles/csgo/cfg/csgo-server.cfg' >> start.sh && \
-    echo '# ------------------' >> start.sh && \
-    echo '' >> start.sh && \
-    echo '# Script Manager' >> start.sh && \
-#     echo './csgoserver auto-install' >> start.sh && \
-#     echo './csgoserver update' >> start.sh && \
-#     echo './csgoserver details' >> start.sh && \
-    echo './csgoserver' >> start.sh && \
-    echo './csgoserver start' >> start.sh && \
-    chmod +x start.sh
-
 # Make Steam 1st time Autentiaction (used to setup cached cradentuals for accounts with 2 factor authentication)
 RUN echo '# Steam 1st time Autentiaction (used to setup cached cradentuals for accounts with 2 factor authentication)' > steam-login.sh && \
     echo '# ------------------' >> steam-login.sh && \
@@ -173,4 +152,4 @@ RUN echo '# Steam 1st time Autentiaction (used to setup cached cradentuals for a
 # https://blog.phusion.nl/2015/01/20/docker-and-the-pid-1-zombie-reaping-problem/
 # ENTRYPOINT ["./csgoserver"]  # does not work the way I want to.
 # CMD ["/bin/bash", "-c", "set -e && /home/csgoserver/start.sh"]  # DOES NOT STAY RUNNING.
-CMD bash -c 'exec /home/csgoserver/start.sh debug';'bash'
+CMD bash -c 'exec /home/csgoserver/csgoserver debug';'bash'
