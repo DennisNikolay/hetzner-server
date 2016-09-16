@@ -142,7 +142,7 @@ RUN echo '# Steam 1st time Autentiaction (used to setup cached cradentuals for a
 
 
 # Run Install Script
-RUN ./csgoserver auto-install
+#RUN ./csgoserver auto-install
 
 # Run Start Script
 # https://labs.ctl.io/dockerfile-entrypoint-vs-cmd/
@@ -153,4 +153,4 @@ RUN ./csgoserver auto-install
 # https://blog.phusion.nl/2015/01/20/docker-and-the-pid-1-zombie-reaping-problem/
 # ENTRYPOINT ["./csgoserver"]  # does not work the way I want to.
 # CMD ["/bin/bash", "-c", "set -e && /home/csgoserver/start.sh"]  # DOES NOT STAY RUNNING.
-CMD bash -c 'exec echo "y\n"  | /home/csgoserver/csgoserver debug';
+CMD bash -c './csgoserver auto-install; exec echo "y\n"  | /home/csgoserver/csgoserver debug';
