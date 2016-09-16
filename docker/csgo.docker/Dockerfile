@@ -11,7 +11,7 @@ MAINTAINER Austin St. Aubin <AustinSaintAubin@gmail.com>
 ENV DEBIAN_FRONTEND noninteractive
 
 #### Variables ####
-ENV SERVER_NAME "Lame Name - Counter Strike: Global Offensive"
+ENV SERVER_NAME "lame server"
 ENV RCON_PASS Birnensaft100Ml
 ENV SERVER_PASS "lame"
 ENV SERVER_LAN 0
@@ -102,7 +102,7 @@ RUN mkdir /home/csgoserver/serverfiles && \
 
 
 ADD cs-server.cfg /home/csgoserver/serverfiles/csgo/cfg/csgo-server.cfg.default
-ADD admin.ini /home/csgoserver/serverfiles/csgo/addons/sourcemod/configs/admins_simple.ini
+ADD admin.ini /home/csgoserver/serverfiles/csgo/addons/sourcemod/configs/admins_simple.ini.default
 ADD pistolround.smx /home/csgoserver/serverfiles/csgo/addons/sourcemod/plugins/pistolround.smx
 
 RUN chown -R csgoserver:csgoserver /home/csgoserver
@@ -169,4 +169,4 @@ RUN echo '# Steam 1st time Autentiaction (used to setup cached cradentuals for a
 # https://blog.phusion.nl/2015/01/20/docker-and-the-pid-1-zombie-reaping-problem/
 # ENTRYPOINT ["./csgoserver"]  # does not work the way I want to.
 # CMD ["/bin/bash", "-c", "set -e && /home/csgoserver/start.sh"]  # DOES NOT STAY RUNNING.
-CMD bash -c './csgoserver auto-install;cp /home/csgoserver/serverfiles/csgo/cfg/csgo-server.cfg.default /home/csgoserver/serverfiles/csgo/cfg/csgo-server.cfg; exec echo "y\n"  | /home/csgoserver/csgoserver debug';
+CMD bash -c './csgoserver auto-install;cp /home/csgoserver/serverfiles/csgo/cfg/csgo-server.cfg.default /home/csgoserver/serverfiles/csgo/cfg/csgo-server.cfg; cp /home/csgoserver/serverfiles/csgo/addons/sourcemod/configs/admins_simple.ini.default /home/csgoserver/serverfiles/csgo/addons/sourcemod/configs/admins_simple.ini; exec echo "y\n"  | /home/csgoserver/csgoserver debug';
