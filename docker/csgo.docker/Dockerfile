@@ -120,8 +120,6 @@ USER csgoserver
 RUN wget http://gameservermanagers.com/dl/csgoserver && \
     chmod +x csgoserver
 
-RUN wget && \
-
 # Edit Server Script to hold Docker Environmental Varables
 RUN sed -i '/emailnotification=/s/"\([^"]*\)"/"$EMAIL_NOTIFICATION"/' csgoserver && \
     sed -i '/email=/s/"\([^"]*\)"/"$EMAIL"/' csgoserver && \
