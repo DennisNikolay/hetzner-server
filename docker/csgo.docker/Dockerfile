@@ -87,6 +87,8 @@ RUN dpkg-reconfigure locales
 # Create softlink for script (Downloaded Later), this will allow ENTRYPOINT to find the script ( endpoint runs in /root/ )
 # RUN ln -s "/home/csgoserver/csgoserver" "/root/csgoserver"
 
+VOLUME serverfiles /home/csgoserver/serverfiles
+
 # Create user to run as
 # script refuses to run in root, create user
 RUN groupadd -r csgoserver && \
@@ -100,10 +102,6 @@ WORKDIR /home/csgoserver
 RUN mkdir /home/csgoserver/serverfiles && \
     mkdir /home/csgoserver/serverfiles/csgo
 
-
-ADD cs-server.cfg /home/csgoserver/serverfiles/csgo/cfg/csgo-server.cfg.default
-ADD admin.cfg /home/csgoserver/serverfiles/csgo/addons/sourcemod/configs/admins.cfg
-ADD pistolround.smx /home/csgoserver/serverfiles/csgo/addons/sourcemod/plugins/pistolround.smx
 
 RUN chown -R csgoserver:csgoserver /home/csgoserver
 RUN chmod -R 770 /home/csgoserver
