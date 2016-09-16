@@ -93,8 +93,8 @@ USER csgoserver
 WORKDIR /home/csgoserver
 
 # Volume
-RUN chown -R csgoserver:csgoserver /home/csgoserver
 VOLUME ["/home/csgoserver/serverfiles"]
+RUN chown -R csgoserver:csgoserver /home/csgoserver
 
 # Download CSGO Server Manager Script
 # https://raw.githubusercontent.com/dgibbs64/linuxgameservers/master/CounterStrikeGlobalOffensive/csgoserver
