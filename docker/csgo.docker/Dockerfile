@@ -45,6 +45,7 @@ ENV SOURCE_TV_PORT 27020
 ENV CLIENT_PORT 27005
 ENV GAME_IP 0.0.0.0
 ENV UPDATE_ON_START off
+ENV GSLT "A2DDBB58121972F629D2702CD31746D9"
 
 # Optional: Workshop Parameters
 # https://developer.valvesoftware.com/wiki/CSGO_Workshop_For_Server_Operators
@@ -126,7 +127,8 @@ RUN sed -i '/emailnotification=/s/"\([^"]*\)"/"$EMAIL_NOTIFICATION"/' csgoserver
     sed -i '/updateonstart=/s/"\([^"]*\)"/"$UPDATE_ON_START"/' csgoserver && \
     sed -i '/authkey=/s/"\([^"]*\)"/"$AUTH_KEY"/' csgoserver && \
     sed -i '/ws_collection_id=/s/"\([^"]*\)"/"$WS_COLLECTION_ID"/' csgoserver && \
-    sed -i '/ws_start_map=/s/"\([^"]*\)"/"$WS_START_MAP"/' csgoserver
+    sed -i '/ws_start_map=/s/"\([^"]*\)"/"$WS_START_MAP"/' csgoserver && \
+    sed -i '/gslt=/s/"\(["]*\)"/"$GSLT"/' csgoserver
 # RUN cat csgoserver  # DEBUG
 
 # Make Steam 1st time Autentiaction (used to setup cached cradentuals for accounts with 2 factor authentication)
