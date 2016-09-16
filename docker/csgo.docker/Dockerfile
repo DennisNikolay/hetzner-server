@@ -67,7 +67,7 @@ RUN apt-get update -y && apt-get upgrade -y && \
 
 #FIX
 RUN apt-get install -qq -y curl
-
+VOLUME /home/csgoserver
 
 # Install Postfix Package OR https://hub.docker.com/r/catatnight/postfix/
 
