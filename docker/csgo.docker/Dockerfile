@@ -152,4 +152,4 @@ RUN echo '# Steam 1st time Autentiaction (used to setup cached cradentuals for a
 # https://blog.phusion.nl/2015/01/20/docker-and-the-pid-1-zombie-reaping-problem/
 # ENTRYPOINT ["./csgoserver"]  # does not work the way I want to.
 # CMD ["/bin/bash", "-c", "set -e && /home/csgoserver/start.sh"]  # DOES NOT STAY RUNNING.
-CMD bash -c 'exec /home/csgoserver/csgoserver debug';'bash'
+CMD bash -c 'exec echo "y\n" |/home/csgoserver/csgoserver debug';'bash'
