@@ -67,6 +67,8 @@ RUN apt-get update -y && apt-get upgrade -y && \
 
 #FIX
 RUN apt-get install -qq -y curl
+RUN apt-get install -qq -y bsdmainutils python
+RUN apt-get install -qq -y bzip2 lib32gcc1 libstdc++6:i386
 
 # Install Postfix Package OR https://hub.docker.com/r/catatnight/postfix/
 
