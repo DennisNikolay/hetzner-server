@@ -141,8 +141,10 @@ RUN sed -i '/emailnotification=/s/"\([^"]*\)"/"$EMAIL_NOTIFICATION"/' csgoserver
 # Run Install Script
 #RUN ./csgoserver auto-install
 ADD serverfiles /home/csgoserver/serverfiles
+USER root
 RUN chown -R csgoserver:csgoserver /home/csgoserver/serverfiles && \
     chmod -R 770 /home/csgoserver/serverfiles
+USER csgoserver
 # Run Start Script
 # https://labs.ctl.io/dockerfile-entrypoint-vs-cmd/
 # http://stackoverflow.com/questions/21553353/what-is-the-difference-between-cmd-and-entrypoint-in-a-dockerfile
