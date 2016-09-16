@@ -102,7 +102,7 @@ RUN mkdir /home/csgoserver/serverfiles && \
 
 
 ADD cs-server.cfg /home/csgoserver/serverfiles/csgo/cfg/csgo-server.cfg.default
-ADD admin.cfg /cdhome/csgoserver/serverfiles/csgo/addons/sourcemod/configs/admins.cfg
+ADD admin.cfg /home/csgoserver/serverfiles/csgo/addons/sourcemod/configs/admins.cfg
 RUN chown -R csgoserver:csgoserver /home/csgoserver
 RUN chmod -R 770 /home/csgoserver
 #VOLUME ["/home/csgoserver/serverfiles
