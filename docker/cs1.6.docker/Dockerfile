@@ -19,6 +19,7 @@ USER csserver
 RUN sed -i 's/ip="0.0.0.0"/ip="144.76.91.19"/g' /home/csserver/csserver.sh
 RUN /home/csserver/csserver.sh auto-install
 ADD cs-server.cfg /home/csserver/serverfiles/cstrike/cs-server.cfg
+ADD maps /home/csserver/serverfiles/cstrike/maps
 USER root
 RUN chown csserver /home/csserver/serverfiles/cstrike/cs-server.cfg
 RUN chmod 770 /home/csserver/serverfiles/cstrike/cs-server.cfg
