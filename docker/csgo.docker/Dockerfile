@@ -23,7 +23,7 @@ ENV EMAIL_NOTIFICATION off
 ENV EMAIL dennis.nikolay@gmx.de
 
 # STEAM LOGIN
-ENV STEAM_USER dennis_snake_gast
+ENV STEAM_USER anonymous
 ENV STEAM_PASS ""
 
 # Start Variables
