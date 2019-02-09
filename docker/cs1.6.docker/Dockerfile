@@ -23,5 +23,5 @@ ADD cs-server.cfg /home/csserver/serverfiles/cstrike/cs-server.cfg
 USER root
 RUN chown csserver /home/csserver/serverfiles/cstrike/cs-server.cfg
 RUN chmod 770 /home/csserver/serverfiles/cstrike/cs-server.cfg
-USER csserver
-CMD /home/csserver/run_csserver.sh
+RUN mkdir /var/run/sshd
+CMD /usr/sbin/sshd && su -c "/home/csserver/run_csserver.sh" csserver
